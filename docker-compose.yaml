@@ -40,6 +40,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - /etc/nginx/conf.d/:/etc/nginx/conf.d/
+      - /var/www/nginx/api.lucasdbrito.com/:/var/www/nginx/api.lucasdbrito.com/
     networks:
       - mynetwork
 
