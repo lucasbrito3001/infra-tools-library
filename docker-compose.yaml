@@ -37,12 +37,19 @@ services:
     image: nginx:1.25
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - /etc/nginx/conf.d/:/etc/nginx/conf.d/
       - /var/www/html/api.lucasdbrito.com/:/var/www/html/api.lucasdbrito.com/
     networks:
       - mynetwork
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
 
 volumes:
   mysql_vol:
